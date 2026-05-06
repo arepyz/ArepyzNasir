@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Neon Fire Chill Room</title>
+
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      overflow: hidden;
+      font-family: sans-serif;
+      color: white;
+      text-align: center;
+      background: black;
+    }
+
+    h1 {
+      margin-top: 30px;
+      text-shadow: 0 0 10px orange, 0 0 20px red;
+      position: relative;
+      z-index: 2;
+    }
+
+    p {
+      opacity: 0.8;
+      position: relative;
+      z-index: 2;
+    }
+
+    button {
+      margin: 8px;
+      padding: 10px 18px;
+      border: none;
+      border-radius: 20px;
+      cursor: pointer;
+      background: linear-gradient(45deg, orange, red);
+      color: white;
+      font-weight: bold;
+      box-shadow: 0 0 10px orange;
+      position: relative;
+      z-index: 2;
+    }
+
+    audio {
+      position: relative;
+      z-index: 2;
+    }
+
+    /* 🔥 glow orb */
+    .glow {
+      position: absolute;
+      width: 250px;
+      height: 250px;
+      background: radial-gradient(circle, rgba(255,80,0,0.5), transparent);
+      border-radius: 50%;
+      animation: float 6s infinite alternate;
+      z-index: 1;
+    }
+
+    @keyframes float {
+      from { transform: translate(-150px, -100px); }
+      to { transform: translate(150px, 100px); }
+    }
+
+    /* 🔥 fire particles */
+    .fire {
+      position: absolute;
+      width: 4px;
+      height: 12px;
+      background: orange;
+      border-radius: 50%;
+      box-shadow: 0 0 10px orange, 0 0 20px red;
+      animation: fall linear infinite;
+      z-index: 1;
+    }
+
+    @keyframes fall {
+      from { transform: translateY(-100vh); opacity: 1; }
+      to { transform: translateY(100vh); opacity: 0; }
+    }
+
+    /* 🎬 VIDEO CLEAR BACKGROUND */
+    video {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -1;
+      opacity: 1;
+      filter: none;
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- 🎬 BACKGROUND VIDEO (CLEAR) -->
+<video autoplay muted loop playsinline>
+  <source src="pokie.mp4" type="video/mp4">
+</video>
+
+<div class="glow"></div>
+
+<h1>Arepyzz Chill Room</h1>
+<p>King Arepyzz x King nassir</p>
+
+<!-- 🎧 BUTTONS -->
+<button onclick="playSong('skibidi.mp3')">+100Aura</button>
+<button onclick="playSong('arep.mp3')">Savage</button>
+<button onclick="playSong('nasri.mp3')">KingNassir</button>
+
+<br><br>
+
+<audio id="music" controls></audio>
+
+<script>
+function playSong(song){
+  let music = document.getElementById("music");
+  music.src = song;
+  music.play();
+}
+
+/* 🔥 fire effect */
+for(let i = 0; i < 80; i++){
+  let fire = document.createElement("div");
+  fire.className = "fire";
+  fire.style.left = Math.random() * 100 + "vw";
+  fire.style.animationDuration = (0.5 + Math.random()) + "s";
+  fire.style.opacity = Math.random();
+  fire.style.background = Math.random() > 0.5 ? "orange" : "red";
+  document.body.appendChild(fire);
+}
+</script>
+
+</body>
+</html>
